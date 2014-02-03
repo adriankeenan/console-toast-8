@@ -18,7 +18,7 @@ namespace Win8Toast
         //Mostly refactored from the nice folks at MS
 
         public static string APP_ID = "";
-        public static string icon_location = "";
+        public static string ICON_LOCATION = "";
         public static bool silent = false;
 
         public static bool TryCreateShortcut()
@@ -44,8 +44,8 @@ namespace Win8Toast
             ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetArguments(""));
 
             //Add icon to shortcut
-            if (icon_location != string.Empty && File.Exists(icon_location))
-                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetIconLocation(icon_location, 0));
+            if (ICON_LOCATION != string.Empty && File.Exists(ICON_LOCATION))
+                ShellHelpers.ErrorHelper.VerifySucceeded(newShortcut.SetIconLocation(ICON_LOCATION, 0));
 
             // Open the shortcut property store, set the AppUserModelId property
             IPropertyStore newShortcutProperties = (IPropertyStore)newShortcut;
@@ -64,7 +64,7 @@ namespace Win8Toast
         }
 
         // Create and show the toast.
-        public static void showToast(XmlDocument xml)
+        public static void ShowToast(XmlDocument xml)
         {
             // Create the toast and attach event listeners
             ToastNotification toast = new ToastNotification(xml);
@@ -73,7 +73,7 @@ namespace Win8Toast
             ToastNotificationManager.CreateToastNotifier(APP_ID).Show(toast);
         }
 
-        public static void toastToastImageAndText01(string line1, string img)
+        public static void ToastToastImageAndText01(string line1, string img)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -84,17 +84,17 @@ namespace Win8Toast
             stringElements[0].AppendChild(toastXml.CreateTextNode(line1));
 
             // Specify the absolute path to an image
-            string imagePath = parseUri(img);
+            string imagePath = ParseUri(img);
             XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
             imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastImageAndText02(string title, string line1, string img)
+        public static void ToastToastImageAndText02(string title, string line1, string img)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -106,17 +106,17 @@ namespace Win8Toast
             stringElements[1].AppendChild(toastXml.CreateTextNode(line1));
 
             // Specify the absolute path to an image
-            string imagePath = parseUri(img);
+            string imagePath = ParseUri(img);
             XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
             imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastImageAndText03(string title, string line1, string img)
+        public static void ToastToastImageAndText03(string title, string line1, string img)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -128,17 +128,17 @@ namespace Win8Toast
             stringElements[1].AppendChild(toastXml.CreateTextNode(line1));
 
             // Specify the absolute path to an image
-            string imagePath = parseUri(img);
+            string imagePath = ParseUri(img);
             XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
             imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastImageAndText04(string title, string line1, string line2, string img)
+        public static void ToastToastImageAndText04(string title, string line1, string line2, string img)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -151,17 +151,17 @@ namespace Win8Toast
             stringElements[2].AppendChild(toastXml.CreateTextNode(line2));
 
             // Specify the absolute path to an image
-            string imagePath = parseUri(img);
+            string imagePath = ParseUri(img);
             XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
             imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastText01(string line1)
+        public static void ToastToastText01(string line1)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -172,12 +172,12 @@ namespace Win8Toast
             stringElements[0].AppendChild(toastXml.CreateTextNode(line1));
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastText02(string title, string line1)
+        public static void ToastToastText02(string title, string line1)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -189,12 +189,12 @@ namespace Win8Toast
             stringElements[1].AppendChild(toastXml.CreateTextNode(line1));
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastText03(string title, string line1)
+        public static void ToastToastText03(string title, string line1)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -206,12 +206,12 @@ namespace Win8Toast
             stringElements[1].AppendChild(toastXml.CreateTextNode(line1));
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        public static void toastToastText04(string title, string line1, string line2)
+        public static void ToastToastText04(string title, string line1, string line2)
         {
             // Get a toast XML template
             XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(
@@ -224,12 +224,12 @@ namespace Win8Toast
             stringElements[2].AppendChild(toastXml.CreateTextNode(line2));
 
             if (silent)
-                makeSilent(toastXml);
+                MakeSilent(toastXml);
 
-            showToast(toastXml);
+            ShowToast(toastXml);
         }
 
-        private static string parseUri(string uri)
+        private static string ParseUri(string uri)
         {
             if (uri.Length >=3 && Char.IsLetter(uri[0]) && uri.Substring(1, 2) == ":/")
                 return String.Format(@"file://{0}", uri);
@@ -237,7 +237,7 @@ namespace Win8Toast
                 return uri;
         }
 
-        private static void makeSilent(XmlDocument toastXml)
+        private static void MakeSilent(XmlDocument toastXml)
         {
             IXmlNode toastNode = toastXml.SelectSingleNode("/toast");
             XmlElement audioNode = toastXml.CreateElement("audio");

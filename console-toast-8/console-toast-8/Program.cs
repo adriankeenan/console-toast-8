@@ -31,34 +31,34 @@ namespace console_toast_8
 
             Toast.APP_ID = app_id;
             Toast.silent = silent;
-            Toast.icon_location = icon;
+            Toast.ICON_LOCATION = icon;
             Toast.TryCreateShortcut();
 
             switch (template)
             {
                 case "ToastImageAndText01":
-                    Toast.toastToastImageAndText01(line1, img);
+                    Toast.ToastToastImageAndText01(line1, img);
                     break;
                 case "ToastImageAndText02":
-                    Toast.toastToastImageAndText02(title, line1, img);
+                    Toast.ToastToastImageAndText02(title, line1, img);
                     break;
                 case "ToastImageAndText03":
-                    Toast.toastToastImageAndText03(title, line1, img);
+                    Toast.ToastToastImageAndText03(title, line1, img);
                     break;
                 case "ToastImageAndText04":
-                    Toast.toastToastImageAndText04(title, line1, line2, img);
+                    Toast.ToastToastImageAndText04(title, line1, line2, img);
                     break;
                 case "ToastText01":
-                    Toast.toastToastText01(line1);
+                    Toast.ToastToastText01(line1);
                     break;
                 case "ToastText02":
-                    Toast.toastToastText02(title, line1);
+                    Toast.ToastToastText02(title, line1);
                     break;
                 case "ToastText03":
-                    Toast.toastToastText03(title, line1);
+                    Toast.ToastToastText03(title, line1);
                     break;
                 case "ToastText04":
-                    Toast.toastToastText04(title, line1, line2);
+                    Toast.ToastToastText04(title, line1, line2);
                     break;
                 default:
                     Environment.Exit(1);
