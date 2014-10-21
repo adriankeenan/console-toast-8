@@ -17,9 +17,9 @@ namespace console_toast_8
 
             OptionSet p = new OptionSet()
             .Add("template=",   "toast template",                                   x => template = x)
-            .Add("title=",      "toast tile",                                       x => title = x)
-            .Add("line1=",      "line one text (all templates)",                    x => line1 = x)
-            .Add("line2=",      "line two text (Text/Text&Image04 templates)",      x => line2 = x)
+            .Add("title=",      "toast tile",                                       x => title = ensureStringUsesUTF8(x))
+            .Add("line1=",      "line one text (all templates)",                    x => line1 = ensureStringUsesUTF8(x))
+            .Add("line2=",      "line two text (Text/Text&Image04 templates)",      x => line2 = ensureStringUsesUTF8(x))
             .Add("img=",        "img url (local or external, all img templates)",   x => img = x)
             .Add("app_id=",     "name to appear in start menu (optional)",          x => app_id = x)
             .Add("icon=",       "path to .ico (optional)",                          x => icon = x)
@@ -66,6 +66,18 @@ namespace console_toast_8
             }
 
             Environment.Exit(0);
+        }
+
+        static String ensureStringUsesUTF8(String str)
+        {
+            if (str != null && str.Length > 0)
+            {
+                return Encoding.UTF8.GetString(Encoding.Default.GetBytes(str));
+            }
+            else
+            {
+                return str;
+            }
         }
     }
 }
