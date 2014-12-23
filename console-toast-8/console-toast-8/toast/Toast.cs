@@ -27,9 +27,12 @@ namespace Win8Toast
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 String.Format("Microsoft\\Windows\\Start Menu\\Programs\\{0}.lnk", APP_ID)
             );
+
             if (File.Exists(shortcutPath))
                 File.Delete(shortcutPath);
+
             InstallShortcut(shortcutPath);
+
             return true;
         }
 
